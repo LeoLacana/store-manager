@@ -1,0 +1,56 @@
+{
+  "requirements": [
+    {
+      "description": "1 - Crie um endpoint para o cadastro de produtos",
+      "bonus": false
+    },
+    {
+      "description": "2 - Crie um endpoint para listar os produtos",
+      "bonus": false
+    },
+    {
+      "description": "3 - Crie um endpoint para atualizar um produto",
+      "bonus": false
+    },
+    {
+      "description": "4 - Crie um endpoint para deletar um produto",
+      "bonus": false
+    },
+    {
+      "description": "5 - Crie um endpoint para cadastrar vendas",
+      "bonus": false
+    },
+    {
+      "description": "6 - Crie um endpoint para listar as vendas",
+      "bonus": false
+    },
+    {
+      "description": "7 - Crie um endpoint para atualizar uma venda",
+      "bonus": false
+    },
+    {
+      "description": "8 - Crie um endpoint para deletar uma venda",
+      "bonus": false
+    },
+    {
+      "description": "9 - Atualize a quantidade de produtos",
+      "bonus": false
+    },
+    {
+      "description": "10 - Valide a quantidade de produtos",
+      "bonus": false
+    },
+    {
+      "description": "11 - Escreva testes para seus models",
+      "bonus": true
+    },
+    {
+      "description": "12 - Escreva testes para seus services",
+      "bonus": true
+    },
+    {
+      "description": "13 - Escreva testes para seus controllers",
+      "bonus": true
+    }
+  ]
+}

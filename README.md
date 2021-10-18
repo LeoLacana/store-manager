@@ -300,7 +300,7 @@ Usaremos o [Jest]() e o [Frisby] para fazer os testes de api.
 
 Este projeto já vem configurado e com suas dependências
 
-Para poder executar os testes basta executar comando `npm tests` e o resultado será igual o abaixo:
+Para poder executar os testes basta executar comando `npm test` e o resultado será igual o abaixo:
 
 ![Testes](./public/testejestfrisby.png)
 

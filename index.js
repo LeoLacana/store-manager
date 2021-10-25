@@ -1,10 +1,11 @@
 const express = require('express');
 
-const { insertProduct } = require('./controllers/controllerProducts');
+const { insertProduct, getProducts, getProductId } = require('./controllers/controllerProducts');
 const {
   validationLengthName,
   validationNameExist,
-  validationQuantity } = require('./middlewares/middlewaresProducts');
+  validationQuantity,
+  validationProduct } = require('./middlewares/middlewaresProducts');
 
 const app = express();
 app.use(express.json());
@@ -19,8 +20,15 @@ app.get('/', (_request, response) => {
 app.post('/products',
   validationLengthName,
   validationNameExist,
-  validationQuantity, 
+  validationQuantity,
   insertProduct);
+
+app.get('/products',
+  getProducts);
+
+app.get('/products/:id',
+  validationProduct,
+  getProductId);
 
 app.listen(PORT, () => { 
   console.log(`Ouvindo a porta ${PORT}`); 

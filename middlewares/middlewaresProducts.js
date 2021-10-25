@@ -1,9 +1,9 @@
+const { ObjectId } = require('mongodb');
 const { getProducts } = require('../models/modelProducts');
 
 const validationLengthName = (req, res, next) => {
   const { name } = req.body;
   if (name.length < 5) {
-    console.log(1);
     return res.status(422).json({
       err: {
         code: 'invalid_data',
@@ -19,7 +19,6 @@ const validationNameExist = async (req, res, next) => {
   const allProducts = await getProducts();
   const statuValidation = allProducts.some((product) => product.name === name);
   if (statuValidation) {
-    console.log(2);
     return res.status(422).json({
       err: {
         code: 'invalid_data',
@@ -33,18 +32,30 @@ const validationNameExist = async (req, res, next) => {
 const validationQuantity = (req, res, next) => {
   const { quantity } = req.body;
   if (quantity <= 0) {
-    console.log(3);
     return res.status(422).json({ err: {
         code: 'invalid_data',
         message: '"quantity" must be larger than or equal to 1',
       },
     });
   }
-  if (typeof (quantity) !== 'number') { 
-    console.log(4);
+  if (typeof (quantity) !== 'number') {
     return res.status(422).json({ err: {
         code: 'invalid_data',
         message: '"quantity" must be a number',
+      },
+    });
+  }
+  next();
+};
+
+const validationProduct = async (req, res, next) => {
+  const { id } = req.params;
+  // const product = await getProductId(ObjectId(id));
+  if (!ObjectId.isValid(id)) {
+    return res.status(422).json({ 
+      err: {
+        code: 'invalid_data',
+        message: 'Wrong id format',
       },
     });
   }
@@ -55,4 +66,5 @@ module.exports = {
   validationLengthName,
   validationNameExist,
   validationQuantity,
+  validationProduct,
 };

@@ -1,6 +1,10 @@
 const express = require('express');
 
-const { insertProduct, getProducts, getProductId } = require('./controllers/controllerProducts');
+const {
+  insertProduct,
+  getProducts,
+  getProductId,
+  updateProduct } = require('./controllers/controllerProducts');
 const {
   validationLengthName,
   validationNameExist,
@@ -29,6 +33,11 @@ app.get('/products',
 app.get('/products/:id',
   validationProduct,
   getProductId);
+
+app.put('/products/:id',
+  validationLengthName,
+  validationQuantity,
+  updateProduct);
 
 app.listen(PORT, () => { 
   console.log(`Ouvindo a porta ${PORT}`); 

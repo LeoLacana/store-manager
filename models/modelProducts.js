@@ -1,6 +1,5 @@
 const { ObjectId } = require('mongodb');
 const connection = require('./connection');
-// const { ObjectId } = require('mongodb');
 
 async function insertProduct(name, quantity) {
     const db = await connection();
@@ -22,8 +21,20 @@ async function getProductId(id) {
     return product;
 }
 
+async function updateProduct(id, name, quantity) {
+    const db = await connection();
+    await db.collection('products').updateOne(
+        { _id: ObjectId(id) },
+        { $set: {
+            name,
+            quantity,
+        } },
+    );
+}
+
 module.exports = {
     insertProduct,
     getProducts,
     getProductId,
+    updateProduct,
 };

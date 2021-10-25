@@ -50,7 +50,6 @@ const validationQuantity = (req, res, next) => {
 
 const validationProduct = async (req, res, next) => {
   const { id } = req.params;
-  // const product = await getProductId(ObjectId(id));
   if (!ObjectId.isValid(id)) {
     return res.status(422).json({ 
       err: {

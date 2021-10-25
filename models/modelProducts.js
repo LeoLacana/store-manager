@@ -32,9 +32,15 @@ async function updateProduct(id, name, quantity) {
     );
 }
 
+async function deleteProduct(id) {
+    const db = await connection();
+    await db.collection('products').deleteOne({ _id: ObjectId(id) });
+}
+
 module.exports = {
     insertProduct,
     getProducts,
     getProductId,
     updateProduct,
+    deleteProduct,
 };

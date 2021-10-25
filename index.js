@@ -4,7 +4,8 @@ const {
   insertProduct,
   getProducts,
   getProductId,
-  updateProduct } = require('./controllers/controllerProducts');
+  updateProduct,
+  deleteProduct } = require('./controllers/controllerProducts');
 const {
   validationLengthName,
   validationNameExist,
@@ -38,6 +39,10 @@ app.put('/products/:id',
   validationLengthName,
   validationQuantity,
   updateProduct);
+
+app.delete('/products/:id',
+  validationProduct,
+  deleteProduct);
 
 app.listen(PORT, () => { 
   console.log(`Ouvindo a porta ${PORT}`); 

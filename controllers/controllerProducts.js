@@ -2,7 +2,8 @@ const {
   insertProducts,
   getProduct,
   getProductsId,
-  updateProducts } = require('../services/serviceProducts');
+  updateProducts,
+  deleteProducts } = require('../services/serviceProducts');
 
 const insertProduct = async (req, res) => {
   const { name, quantity } = req.body;
@@ -28,9 +29,17 @@ const updateProduct = async (req, res) => {
   return res.status(200).json({ _id: id, name, quantity });
 };
 
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  const product = await getProductsId(id);
+  await deleteProducts(id);
+  return res.status(200).json(product);
+};
+
 module.exports = {
   insertProduct,
   getProducts,
   getProductId,
   updateProduct,
+  deleteProduct,
 };

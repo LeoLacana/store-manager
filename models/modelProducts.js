@@ -16,7 +16,6 @@ async function getProducts() {
 async function getProductId(id) {
     const db = await connection();
     const product = await db.collection('products').findOne({ _id: ObjectId(id) });
-    console.log(2);
     if (!product) return null;
     return product;
 }

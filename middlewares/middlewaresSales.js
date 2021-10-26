@@ -1,3 +1,5 @@
+const { ObjectId } = require('mongodb');
+
 async function validationQuantitySales(req, res, next) {
   const itensSold = req.body;
   const isValid = itensSold
@@ -13,6 +15,20 @@ async function validationQuantitySales(req, res, next) {
   next();
 }
 
+const validationSales = async (req, res, next) => {
+  const { id } = req.params;
+  if (!ObjectId.isValid(id)) {
+    return res.status(404).json({
+      err: {
+        code: 'not_found',
+        message: 'Sale not found',
+      },
+    });
+  }
+  next();
+};
+
 module.exports = {
   validationQuantitySales,
+  validationSales,
 };

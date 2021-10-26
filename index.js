@@ -8,7 +8,9 @@ const {
   deleteProduct } = require('./controllers/controllerProducts');
 
 const {
-  insertSales } = require('./controllers/controllerSales');
+  insertSales,
+  getSales,
+  getSalesId } = require('./controllers/controllerSales');
 
 const {
   validationLengthName,
@@ -17,7 +19,8 @@ const {
   validationProduct } = require('./middlewares/middlewaresProducts');
 
 const {
-  validationQuantitySales } = require('./middlewares/middlewaresSales');
+  validationQuantitySales,
+  validationSales } = require('./middlewares/middlewaresSales');
 
 const app = express();
 app.use(express.json());
@@ -54,6 +57,13 @@ app.delete('/products/:id',
 app.post('/sales',
   validationQuantitySales,
   insertSales);
+
+app.get('/sales',
+  getSales);
+
+app.get('/sales/:id',
+  validationSales,
+  getSalesId);
 
 app.listen(PORT, () => { 
   console.log(`Ouvindo a porta ${PORT}`); 

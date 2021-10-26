@@ -1,4 +1,9 @@
-const { insertSales, getSales, getSalesId, updateSales } = require('../models/modelSales');
+const {
+  insertSales,
+  getSales,
+  getSalesId,
+  updateSales,
+  deleteSales } = require('../models/modelSales');
 
 async function setSales(itensSold) {
   const sale = await insertSales(itensSold);
@@ -20,9 +25,15 @@ async function updatingSales(id, itensSold) {
   return sales;
 }
 
+async function deletedSales(id) {
+  const salesDelete = await deleteSales(id);
+  return salesDelete;
+}
+
 module.exports = {
   setSales,
   showSales,
   showSalesId,
   updatingSales,
+  deletedSales,
 };

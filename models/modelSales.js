@@ -35,9 +35,17 @@ async function updateSales(id, itensSold) {
   return getSalesId(id);
 }
 
+async function deleteSales(id) {
+  const db = await connection();
+  const salesById = await db.collection('sales').findOne({ _id: ObjectId(id) });
+  await db.collection('sales').deleteOne({ _id: ObjectId(id) });
+  return salesById;
+}
+
 module.exports = {
   insertSales,
   getSales,
   getSalesId,
   updateSales,
+  deleteSales,
 };

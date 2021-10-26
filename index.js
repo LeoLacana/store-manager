@@ -11,7 +11,8 @@ const {
   insertSales,
   getSales,
   getSalesId,
-  updateSales } = require('./controllers/controllerSales');
+  updateSales,
+  deleteSales } = require('./controllers/controllerSales');
 
 const {
   validationLengthName,
@@ -21,7 +22,8 @@ const {
 
 const {
   validationQuantitySales,
-  validationSales } = require('./middlewares/middlewaresSales');
+  validationSales,
+  validationDeleteSales } = require('./middlewares/middlewaresSales');
 
 const app = express();
 app.use(express.json());
@@ -69,6 +71,10 @@ app.get('/sales/:id',
 app.put('/sales/:id',
   validationQuantitySales,
   updateSales);
+
+app.delete('/sales/:id',
+  validationDeleteSales,
+  deleteSales);
 
 app.listen(PORT, () => { 
   console.log(`Ouvindo a porta ${PORT}`); 

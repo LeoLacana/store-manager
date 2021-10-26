@@ -10,7 +10,8 @@ const {
 const {
   insertSales,
   getSales,
-  getSalesId } = require('./controllers/controllerSales');
+  getSalesId,
+  updateSales } = require('./controllers/controllerSales');
 
 const {
   validationLengthName,
@@ -64,6 +65,10 @@ app.get('/sales',
 app.get('/sales/:id',
   validationSales,
   getSalesId);
+
+app.put('/sales/:id',
+  validationQuantitySales,
+  updateSales);
 
 app.listen(PORT, () => { 
   console.log(`Ouvindo a porta ${PORT}`); 

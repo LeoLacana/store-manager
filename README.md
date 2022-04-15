@@ -22,7 +22,7 @@ Nesse projeto, você será capaz de:
 # Como Rodar o Projeto
   ```bash
 npm install
-npm run dev
+npm start
 
 EndPoints
 
